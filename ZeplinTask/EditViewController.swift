@@ -1,17 +1,16 @@
 import UIKit
 
-class EditViewController: UIViewController {
+class EditViewController: UITableViewController {
     
-    @IBOutlet var labelsOfNumbers: [UILabel]!
-
+//    @IBOutlet var labelsOfNumbers: [UILabel]!
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.navigationController?.navigationBar.barTintColor = UIColor(displayP3Red: 47/255, green: 129/255, blue: 183/255, alpha: 1.0)
-        
-        for label in labelsOfNumbers {
-            label.textColor = UIColor(displayP3Red: 47/255, green: 129/255, blue: 183/255, alpha: 1.0)
-        }
+
+//        for label in labelsOfNumbers {
+//            label.textColor = UIColor(displayP3Red: 47/255, green: 129/255, blue: 183/255, alpha: 1.0)
+//        }
 
         let menuBtn = UIButton(type: .custom)
         menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 20, height: 20)

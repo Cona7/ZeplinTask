@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1D76D98A2186586600EF9488 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76D9892186586600EF9488 /* EditProfileViewController.swift */; };
 		1D76D98D2187432700EF9488 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76D98C2187432700EF9488 /* UIColorExtension.swift */; };
+		1D9A29F321888E9900F2EC93 /* TypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9A29F221888E9900F2EC93 /* TypeViewCell.swift */; };
 		1DA1CD3A2183902800B871E9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DA1CD392183902800B871E9 /* AppDelegate.swift */; };
 		1DA1CD3F2183902800B871E9 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DA1CD3D2183902800B871E9 /* Main.storyboard */; };
 		1DA1CD412183902900B871E9 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DA1CD402183902900B871E9 /* Assets.xcassets */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		1D76D9892186586600EF9488 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		1D76D98C2187432700EF9488 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
+		1D9A29F221888E9900F2EC93 /* TypeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeViewCell.swift; sourceTree = "<group>"; };
 		1DA1CD362183902800B871E9 /* ZeplinTask.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ZeplinTask.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1DA1CD392183902800B871E9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1DA1CD3E2183902800B871E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				1D76D98B2187430100EF9488 /* Extensions */,
 				1DA1CD4D2186345100B871E9 /* EditViewController.swift */,
 				1D76D9892186586600EF9488 /* EditProfileViewController.swift */,
+				1D9A29F221888E9900F2EC93 /* TypeViewCell.swift */,
 			);
 			path = ZeplinTask;
 			sourceTree = "<group>";
@@ -154,6 +157,7 @@
 			files = (
 				1D76D98A2186586600EF9488 /* EditProfileViewController.swift in Sources */,
 				1DA1CD3A2183902800B871E9 /* AppDelegate.swift in Sources */,
+				1D9A29F321888E9900F2EC93 /* TypeViewCell.swift in Sources */,
 				1D76D98D2187432700EF9488 /* UIColorExtension.swift in Sources */,
 				1DA1CD4C2183AF0000B871E9 /* UILabelLetterSpacingExtension.swift in Sources */,
 				1DA1CD4E2186345100B871E9 /* EditViewController.swift in Sources */,

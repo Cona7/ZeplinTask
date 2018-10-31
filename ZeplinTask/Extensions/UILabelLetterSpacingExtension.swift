@@ -2,14 +2,12 @@ import UIKit
 
 extension UILabel {
 
-    @IBInspectable
-    var letterSpace: CGFloat {
+    @IBInspectable var letterSpace: CGFloat {
         set {
             let attributedString: NSMutableAttributedString!
             if let currentAttrString = attributedText {
                 attributedString = NSMutableAttributedString(attributedString: currentAttrString)
-            }
-            else {
+            } else {
                 attributedString = NSMutableAttributedString(string: self.text ?? "")
                 text = ""
             }
@@ -23,8 +21,7 @@ extension UILabel {
         get {
             if let currentLetterSpace = attributedText?.attribute(NSAttributedString.Key.kern, at: 0, effectiveRange: .none) as? CGFloat {
                 return currentLetterSpace
-            }
-            else {
+            } else {
                 return 0
             }
         }

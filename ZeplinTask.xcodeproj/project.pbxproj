@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D4688502189EC9D00BE6FEA /* UITextFieldExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D46884F2189EC9D00BE6FEA /* UITextFieldExtension.swift */; };
 		1D76D98A2186586600EF9488 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76D9892186586600EF9488 /* EditProfileViewController.swift */; };
 		1D76D98D2187432700EF9488 /* UIColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D76D98C2187432700EF9488 /* UIColorExtension.swift */; };
 		1D9A29F321888E9900F2EC93 /* TypeViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D9A29F221888E9900F2EC93 /* TypeViewCell.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D46884F2189EC9D00BE6FEA /* UITextFieldExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtension.swift; sourceTree = "<group>"; };
 		1D76D9892186586600EF9488 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		1D76D98C2187432700EF9488 /* UIColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtension.swift; sourceTree = "<group>"; };
 		1D9A29F221888E9900F2EC93 /* TypeViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeViewCell.swift; sourceTree = "<group>"; };
@@ -48,6 +50,7 @@
 			children = (
 				1DA1CD4B2183AF0000B871E9 /* UILabelLetterSpacingExtension.swift */,
 				1D76D98C2187432700EF9488 /* UIColorExtension.swift */,
+				1D46884F2189EC9D00BE6FEA /* UITextFieldExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -94,6 +97,7 @@
 				1DA1CD322183902800B871E9 /* Sources */,
 				1DA1CD332183902800B871E9 /* Frameworks */,
 				1DA1CD342183902800B871E9 /* Resources */,
+				1D4688512189FAAA00BE6FEA /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -150,6 +154,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1D4688512189FAAA00BE6FEA /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\nswiftlint\nelse\necho \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		1DA1CD322183902800B871E9 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -157,6 +181,7 @@
 			files = (
 				1D76D98A2186586600EF9488 /* EditProfileViewController.swift in Sources */,
 				1DA1CD3A2183902800B871E9 /* AppDelegate.swift in Sources */,
+				1D4688502189EC9D00BE6FEA /* UITextFieldExtension.swift in Sources */,
 				1D9A29F321888E9900F2EC93 /* TypeViewCell.swift in Sources */,
 				1D76D98D2187432700EF9488 /* UIColorExtension.swift in Sources */,
 				1DA1CD4C2183AF0000B871E9 /* UILabelLetterSpacingExtension.swift in Sources */,

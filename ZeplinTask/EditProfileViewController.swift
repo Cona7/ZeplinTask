@@ -2,17 +2,19 @@ import UIKit
 
 class EditProfileViewController: UIViewController {
 
-    @IBOutlet private weak var ageTextField: UITextField!
-    @IBOutlet private weak var heightTextField: UITextField!
-    @IBOutlet private weak var weightTextField: UITextField!
+    @IBOutlet weak var ageTextField: UITextField!
+    @IBOutlet weak var heightTextField: UITextField!
+    @IBOutlet weak var weightTextField: UITextField!
 
-    @IBOutlet private weak var heightSegmentedControl: UISegmentedControl!
-    @IBOutlet private weak var weightSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var heightSegmentedControl: UISegmentedControl!
+    @IBOutlet weak var weightSegmentedControl: UISegmentedControl!
 
-    @IBOutlet private weak var saveButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
 
-    @IBOutlet private weak var upKeyboardConstraints: NSLayoutConstraint!
-    @IBOutlet private weak var upbuttonKeyboardContraint: NSLayoutConstraint!
+    @IBOutlet weak var upKeyboardConstraints: NSLayoutConstraint!
+    @IBOutlet weak var upbuttonKeyboardContraint: NSLayoutConstraint!
+
+    let deviceType = UIDevice.current.name
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,16 +53,35 @@ class EditProfileViewController: UIViewController {
 
     @objc
     func keyboardWillShow(sender: Notification) {
-        upKeyboardConstraints.constant = -90
-        upbuttonKeyboardContraint.constant = 180
-        self.view.layoutIfNeeded()
+        switch deviceType {
+        case "iPhone SE":
+            upKeyboardConstraints.constant = -90
+            upbuttonKeyboardContraint.constant = 180
+            self.view.layoutIfNeeded()
+        case "iPhone 5s":
+            upKeyboardConstraints.constant = -90
+            upbuttonKeyboardContraint.constant = 180
+            self.view.layoutIfNeeded()
+        default: break
+        }
     }
 
     @objc
     func keyboardWillHide(sender: Notification) {
+        switch deviceType {
+        case "iPhone SE":
+            moveUpConstraint()
+        case "iPhone 5s":
+            moveUpConstraint()
+
+        default: break
+        }
+    }
+
+    func moveUpConstraint() {
         upKeyboardConstraints.constant = 50
         upbuttonKeyboardContraint.constant = 40
-         self.view.layoutIfNeeded()
+        self.view.layoutIfNeeded()
     }
 
     func initUITextField(_ textField: UITextField) {

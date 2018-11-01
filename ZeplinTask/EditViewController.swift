@@ -2,6 +2,12 @@ import UIKit
 
 class EditViewController: UITableViewController {
 
+    struct CellModel {
+
+        let name: String
+        let number: String = "8545"
+    }
+
     let pictureString = "Image-1"
 
     let arrayTotal: [CellModel] = [CellModel(name: "Total workouts"),
@@ -87,10 +93,4 @@ extension EditViewController {
 
         return cell
     }
-}
-
-struct CellModel {
-
-    let name: String
-    let number: String = "8545"
 }

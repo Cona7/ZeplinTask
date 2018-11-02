@@ -10,12 +10,13 @@ extension UILabel {
                 attributedString = NSMutableAttributedString(attributedString: currentAttrString)
             } else {
                 attributedString = NSMutableAttributedString(string: self.text ?? "")
-                text = ""
             }
 
-            attributedString.addAttribute(NSAttributedString.Key.kern,
-                                          value: newValue,
-                                          range: NSRange(location: 0, length: attributedString.length))
+            attributedString.addAttribute(
+                NSAttributedString.Key.kern,
+                value: newValue,
+                range: NSRange(location: 0, length: attributedString.length)
+            )
             attributedText = attributedString
         }
 

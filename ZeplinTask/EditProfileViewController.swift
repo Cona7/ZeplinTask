@@ -11,10 +11,8 @@ class EditProfileViewController: UIViewController {
 
     @IBOutlet weak var saveButton: UIButton!
 
-    @IBOutlet weak var upKeyboardConstraints: NSLayoutConstraint!
-    @IBOutlet weak var upbuttonKeyboardContraint: NSLayoutConstraint!
-
-    let deviceType = UIDevice.current.name
+    @IBOutlet weak var buttonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var imageViewTopConstraint: NSLayoutConstraint!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,11 +23,8 @@ class EditProfileViewController: UIViewController {
         initUITextField(heightTextField)
         initUITextField(weightTextField)
 
-        heightSegmentedControl.tintColor = .customBlue
-        heightSegmentedControl.layer.cornerRadius = 4
-
-        weightSegmentedControl.tintColor = .customBlue
-        weightSegmentedControl.layer.cornerRadius = 4
+        initUISegmentedControl(heightSegmentedControl)
+        initUISegmentedControl(weightSegmentedControl)
 
         saveButton.backgroundColor = .customBlue
         saveButton.layer.cornerRadius = 8
@@ -37,60 +32,48 @@ class EditProfileViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
 
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.dismissKeyboard))
+        let tapGestrure = UITapGestureRecognizer(target: self, action: #selector(EditProfileViewController.dismissKeyboard))
 
-        view.addGestureRecognizer(tap)
-
-        self.ageTextField.delegate = self
-        self.heightTextField.delegate = self
-        self.weightTextField.delegate = self
-    }
-
-    @objc
-    func dismissKeyboard() {
-        self.view.endEditing(true)
-    }
-
-    @objc
-    func keyboardWillShow(sender: Notification) {
-        switch deviceType {
-        case "iPhone SE":
-            upKeyboardConstraints.constant = -90
-            upbuttonKeyboardContraint.constant = 180
-            self.view.layoutIfNeeded()
-        case "iPhone 5s":
-            upKeyboardConstraints.constant = -90
-            upbuttonKeyboardContraint.constant = 180
-            self.view.layoutIfNeeded()
-        default: break
-        }
-    }
-
-    @objc
-    func keyboardWillHide(sender: Notification) {
-        switch deviceType {
-        case "iPhone SE":
-            moveUpConstraint()
-        case "iPhone 5s":
-            moveUpConstraint()
-
-        default: break
-        }
-    }
-
-    func moveUpConstraint() {
-        upKeyboardConstraints.constant = 50
-        upbuttonKeyboardContraint.constant = 40
-        self.view.layoutIfNeeded()
+        view.addGestureRecognizer(tapGestrure)
     }
 
     func initUITextField(_ textField: UITextField) {
-
         textField.layer.borderColor = UIColor.customBlue.cgColor
         textField.layer.borderWidth = 1.0
         textField.layer.cornerRadius = 4
         textField.textColor = .customBlue
         textField.setLeftPaddingPoints(3)
+    }
+
+    func initUISegmentedControl(_ segmentedControl: UISegmentedControl) {
+        segmentedControl.tintColor = .customBlue
+        segmentedControl.layer.cornerRadius = 4
+    }
+
+    @objc
+    func keyboardWillShow(notification: Notification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            if keyboardSize.origin.y < (weightTextField.frame.origin.y + weightTextField.frame.height) {
+                let constantToRaiseConstraint = keyboardSize.origin.y - weightTextField.frame.origin.y - weightTextField.frame.height - 20
+                imageViewTopConstraint.constant += constantToRaiseConstraint
+                buttonBottomConstraint.constant -= constantToRaiseConstraint
+                self.view.layoutIfNeeded()
+            }
+        }
+    }
+
+    @objc
+    func keyboardWillHide(notification: Notification) {
+        if imageViewTopConstraint.constant != 50 {
+            imageViewTopConstraint.constant = 50
+            buttonBottomConstraint.constant = 40
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc
+    func dismissKeyboard() {
+        self.view.endEditing(true)
     }
 }
 

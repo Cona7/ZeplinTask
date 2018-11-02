@@ -5,6 +5,7 @@ extension UILabel {
     @IBInspectable var letterSpace: CGFloat {
         set {
             let attributedString: NSMutableAttributedString!
+
             if let currentAttrString = attributedText {
                 attributedString = NSMutableAttributedString(attributedString: currentAttrString)
             } else {

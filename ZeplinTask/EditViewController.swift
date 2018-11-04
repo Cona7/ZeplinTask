@@ -5,36 +5,35 @@ class EditViewController: UITableViewController {
     struct CellModel {
 
         let name: String
-        let number: String = "8545"
+        let number = "8545"
     }
 
     let pictureString = "Image-1"
 
-    let arrayTotal: [CellModel] = [CellModel(name: "Total workouts"),
-                                   CellModel(name: "Total reps")]
+    let arrayTotal = [
+                        CellModel(name: "Total workouts"),
+                        CellModel(name: "Total reps")
+                     ]
 
-    let arrayMuscles: [CellModel] = [CellModel(name: "Triceps"),
-                                     CellModel(name: "Biceps"),
-                                     CellModel(name: "Bench")]
+    let arrayMuscles = [
+                          CellModel(name: "Triceps"),
+                          CellModel(name: "Biceps"),
+                          CellModel(name: "Bench")
+                       ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let menuBtn = UIButton(type: .custom)
-        menuBtn.frame = CGRect(x: 0.0, y: 0.0, width: 20, height: 20)
-        menuBtn.setImage(UIImage(named: pictureString), for: .normal)
+        let menuBtn = UIButton()
+        menuBtn.setImage(#imageLiteral(resourceName: "image-1"), for: .normal)
         menuBtn.addTarget(self, action: #selector(editButtonTapped), for: UIControl.Event.touchUpInside)
 
         let settingsBarItem = UIBarButtonItem(customView: menuBtn)
-        let currWidth = settingsBarItem.customView?.widthAnchor.constraint(equalToConstant: 22.3)
-        currWidth?.isActive = true
-        let currHeight = settingsBarItem.customView?.heightAnchor.constraint(equalToConstant: 22.3)
-        currHeight?.isActive = true
-        self.navigationItem.rightBarButtonItem = settingsBarItem
+        navigationItem.rightBarButtonItem = settingsBarItem
 
-        self.navigationItem.title = "Profile"
+        navigationItem.title = "Profile"
 
-        self.navigationController?.navigationBar.barTintColor = .customBlue
+        navigationController?.navigationBar.barTintColor = .customBlue
     }
 
     @objc
@@ -48,12 +47,6 @@ class EditViewController: UITableViewController {
 }
 
 extension EditViewController {
-
-    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let view = UIView()
-        view.backgroundColor = .white
-        return view
-    }
 
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 6.0
@@ -81,15 +74,21 @@ extension EditViewController {
             fatalError("The dequeued cell is not an instance of TypeViewCell.")
         }
 
-        let workoutCell = indexPath.section == 0 ? arrayTotal[indexPath.row] : arrayMuscles[indexPath.row]
+        let workoutCell: CellModel
+
+        switch indexPath.section {
+        case 0:
+            workoutCell = arrayTotal[indexPath.row]
+        case 1:
+            workoutCell = arrayMuscles[indexPath.row]
+        default:
+            fatalError("The section number is not valid")
+        }
 
         cell.stringLabel.text = workoutCell.name
         cell.numberLabel.text = workoutCell.number
-        cell.numberLabel.textColor = .customBlue
-        cell.numberLabel.font = UIFont(name: "Helvetica-Neue", size: 15.0)
-        cell.stringLabel.font = UIFont(name: "Helvetica-Neue", size: 17.0)
         cell.stringLabel.letterSpace = 0.4
-        cell.numberLabel.letterSpace = 0.04
+        cell.numberLabel.letterSpace = 0.4
 
         return cell
     }

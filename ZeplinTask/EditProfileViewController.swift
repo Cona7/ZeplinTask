@@ -52,13 +52,12 @@ class EditProfileViewController: UIViewController {
 
     @objc
     func keyboardWillShow(notification: Notification) {
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            if keyboardSize.origin.y < (weightTextField.frame.origin.y + weightTextField.frame.height) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            keyboardSize.origin.y < (weightTextField.frame.origin.y + weightTextField.frame.height) {
                 let constantToRaiseConstraint = keyboardSize.origin.y - weightTextField.frame.origin.y - weightTextField.frame.height - 20
                 imageViewTopConstraint.constant += constantToRaiseConstraint
                 buttonBottomConstraint.constant -= constantToRaiseConstraint
-                self.view.layoutIfNeeded()
-            }
+                view.layoutIfNeeded()
         }
     }
 
@@ -67,7 +66,7 @@ class EditProfileViewController: UIViewController {
         if imageViewTopConstraint.constant != 50 {
             imageViewTopConstraint.constant = 50
             buttonBottomConstraint.constant = 40
-            self.view.layoutIfNeeded()
+            view.layoutIfNeeded()
         }
     }
 

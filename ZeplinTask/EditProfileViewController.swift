@@ -17,7 +17,7 @@ class EditProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.navigationItem.title = "Edit Profile"
+        navigationItem.title = "Edit Profile"
 
         initUITextField(ageTextField)
         initUITextField(heightTextField)
@@ -54,10 +54,10 @@ class EditProfileViewController: UIViewController {
     func keyboardWillShow(notification: Notification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
             keyboardSize.origin.y < (weightTextField.frame.origin.y + weightTextField.frame.height) {
-                let constantToRaiseConstraint = keyboardSize.origin.y - weightTextField.frame.origin.y - weightTextField.frame.height - 20
-                imageViewTopConstraint.constant += constantToRaiseConstraint
-                buttonBottomConstraint.constant -= constantToRaiseConstraint
-                view.layoutIfNeeded()
+            let constantToRaiseConstraint = keyboardSize.origin.y - weightTextField.frame.origin.y - weightTextField.frame.height - 20
+            imageViewTopConstraint.constant += constantToRaiseConstraint
+            buttonBottomConstraint.constant -= constantToRaiseConstraint
+            view.layoutIfNeeded()
         }
     }
 
@@ -72,14 +72,14 @@ class EditProfileViewController: UIViewController {
 
     @objc
     func dismissKeyboard() {
-        self.view.endEditing(true)
+        view.endEditing(true)
     }
 }
 
 extension EditProfileViewController: UITextFieldDelegate {
 
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        self.view.endEditing(true)
+        view.endEditing(true)
         return false
     }
 }

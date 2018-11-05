@@ -8,18 +8,16 @@ class EditViewController: UITableViewController {
         let number = "8545"
     }
 
-    let pictureString = "Image-1"
-
     let arrayTotal = [
-                        CellModel(name: "Total workouts"),
-                        CellModel(name: "Total reps")
-                     ]
+        CellModel(name: "Total workouts"),
+        CellModel(name: "Total reps")
+    ]
 
     let arrayMuscles = [
-                          CellModel(name: "Triceps"),
-                          CellModel(name: "Biceps"),
-                          CellModel(name: "Bench")
-                       ]
+        CellModel(name: "Triceps"),
+        CellModel(name: "Biceps"),
+        CellModel(name: "Bench")
+    ]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,10 +59,14 @@ extension EditViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        switch section {
+        case 0:
             return arrayTotal.count
+        case 1:
+            return arrayMuscles.count
+        default:
+            fatalError("The section number is not valid")
         }
-        return arrayMuscles.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
